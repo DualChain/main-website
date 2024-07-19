@@ -6,7 +6,10 @@ import GoogleAnalytics from '@components/support/GoogleAnalytics.astro'
 import UmamiAnalytics from '@components/support/UmamiAnalytics.astro'
 import { SITE } from '@/config'
 import { ViewTransitions } from 'astro:transitions';
-import '../styles/global.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 interface Props {
     title: string
     description: string
