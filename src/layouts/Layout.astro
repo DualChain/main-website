@@ -6,6 +6,8 @@ interface Props {
 const { title } = Astro.props;
 import Header from '../components/header/Header.astro';
 import { mainMenu } from '../components/data/menuData.js';
+import { ViewTransitions } from 'astro:transitions';
+
 ---
 
 <!doctype html>
@@ -25,8 +27,9 @@ import { mainMenu } from '../components/data/menuData.js';
 		/>
 		<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 		<title>{title}</title>
+    		<ViewTransitions />
 	</head>
-	<body class="flex flex-col">
+	<body class="flex flex-col" tranisiton:anime="slide">
 
 			<slot/>
 	</body>
