@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 import Layout from '@layouts/LandingLayout.astro'
-import '../styles/background.css';
 import FeaturesSection from '@components/ui/sections/LandingSection.astro'
 
 
@@ -14,3 +13,18 @@ const posts: CollectionEntry<'posts'>[] = (await getCollection('posts')).sort(
 <Layout >
     <FeaturesSection />
 </Layout>
+
+
+
+<style>
+    /* src/styles/background.css */
+body {
+    background-image: url('background.jpg');
+    background-size: cover; /* or contain, depending on your needs */
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+</style>
