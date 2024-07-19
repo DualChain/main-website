@@ -19,7 +19,7 @@ const { title, description = SITE.description, ogImage, lang = 'en', structuredD
 const normalizeTitle = !title ? SITE.title : `${title} | ${SITE.title}`
 ---
 
-<html lang={lang} class="scrollbar-hide lenis lenis-smooth scroll-pt-16">
+<html lang={lang} class="scrollbar-hide scroll-pt-16">
     <head>
         <title>{normalizeTitle}</title>
         <BaseHead
@@ -31,25 +31,14 @@ const normalizeTitle = !title ? SITE.title : `${title} | ${SITE.title}`
             structuredData={structuredData}
         />
         <script is:inline>
-        function colormode(){
          if (localStorage.getItem('hs_theme') === 'dark' || (!('hs_theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
              document.documentElement.classList.add('dark')
          }
          else {
              document.documentElement.classList.remove('dark')
          }
-        }
-        colormode();
+
          </script>
-        <script is:inline src="/vendor/lenis/lenis1.1.5.min.js"></script>
-        <script is:inline>
-        const lenis = new Lenis()
-        function raf(time) {
-            lenis.raf(time)
-            requestAnimationFrame(raf)
-        }
-        requestAnimationFrame(raf)
-        </script>
         <ViewTransitions />
 
     </head>
@@ -59,30 +48,5 @@ const normalizeTitle = !title ? SITE.title : `${title} | ${SITE.title}`
                 <slot />
             </main>
         </div>
-        <style>
-            .scrollbar-hide::-webkit-scrollbar {
-                display: none;
-            }
-            .scrollbar-hide {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-            }
-            html.lenis,
-            html.lenis body {
-                height: auto;
-            }
-            .lenis.lenis-smooth {
-                scroll-behavior: auto !important;
-            }
-            .lenis.lenis-smooth [data-lenis-prevent] {
-                overscroll-behavior: contain;
-            }
-            .lenis.lenis-stopped {
-                overflow: hidden;
-            }
-            .lenis.lenis-scrolling iframe {
-                pointer-events: none;
-            }
-        </style>
     </body>
 </html>
