@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+import BaseLayout from '@layouts/BaseLayout.astro'
+import HeroSection from '@components/ui/sections/HeroSection.astro'
+import HeroSectionAlt from '@components/ui/sections/HeroSectionAlt.astro'
+
+
+
+
+const posts: CollectionEntry<'posts'>[] = (await getCollection('posts')).sort(
+    (a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+).slice(0, 3);
+---
+
+<BaseLayout>
+
+<HeroSection>
+
+</HeroSection>
+
+    <HeroSectionAlt
+        title="Get in touch"
+        subTitle=""
+        url="https://github.com/godruoyi"
+    />
+</BaseLayout>

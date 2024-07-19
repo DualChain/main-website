@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+import Layout from '@layouts/LandingLayout.astro'
+import '../styles/background.css';
+import FeaturesSection from '@components/ui/sections/LandingSection.astro'
+
+
+const posts: CollectionEntry<'posts'>[] = (await getCollection('posts')).sort(
+    (a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+).slice(0, 3);
+---
+
+<Layout >
+    <FeaturesSection />
+</Layout>
